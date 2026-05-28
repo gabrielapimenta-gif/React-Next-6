@@ -1,4 +1,5 @@
 'use client';
+
 import { useRouter } from 'next/navigation';
 
 interface Produto {
@@ -8,17 +9,18 @@ interface Produto {
 }
 
 export default function PaginaMestra() {
+
     const router = useRouter();
 
     const estiloDoBotao =
         "w-full py-3 my-3 rounded-lg text-white bg-blue-700";
 
-    const handleNavigate = (dado: Produto) => {
+    const handleNavigate = (produto: Produto) => {
 
         router.push(
-            `/pages/detalhe?id=${dado.id}&nome=${encodeURIComponent(
-                dado.nome
-            )}&preco=${dado.preco}`
+            `/pages/detalhe?id=${produto.id}&nome=${encodeURIComponent(
+                produto.nome
+            )}&preco=${produto.preco}`
         );
     };
 
@@ -29,8 +31,11 @@ export default function PaginaMestra() {
     };
 
     return (
-        <div className='p-4'>
-            <h1>Página Mestra</h1>
+        <div className="p-4">
+
+            <h1 className="text-2xl font-bold">
+                Página Mestra
+            </h1>
 
             <button
                 className={estiloDoBotao}
@@ -38,6 +43,7 @@ export default function PaginaMestra() {
             >
                 Ir para a página de Detalhes do Produto
             </button>
+
         </div>
     );
 }
